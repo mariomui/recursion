@@ -22,7 +22,22 @@
 // };
 
 // But instead we're going to implement it from scratch:
-var ind=0;
+_ = {
+    each: function(collection, callback) {
+        if (typeof collection === 'object') {
+            if (Array.isArray) {
+                for (var i = 0; i < collection.length; ++i) {
+                    callback(collection[i], i);
+                }
+            } else {
+                for (var key in collection) {
+                    callback(collection[key], key);
+                }
+            }
+        }
+    }
+}
+
 var getElementsByClassName = function(className) {
     //last part of the tree is when there are no more elements in body.
     //body.childNodes[i] = body.childNodes[3] (lets say.)
@@ -33,7 +48,6 @@ var getElementsByClassName = function(className) {
     //looping 4 times but i have at least 5 elements.
     var recurseThis = function (bodyNodes) {
         //this recursion is stopping early.
-        alert(ind++);
         if ( bodyNodes.classList && bodyNodes.classList.contains(className) ) {
             console.log("hello");
             //this part isnt registering at all.
@@ -43,13 +57,14 @@ var getElementsByClassName = function(className) {
         if ( bodyNodes.hasChildNodes() ) {
             //this should do it first.
             //the block inside here does run.
-            for (var i = 0; i < bodyNodes.; i++) {
-                //getting the length doesnt work?
-                //body nodes is an object.
-                //okay i got this block to run. But array is still empty.
-                //there must be something wrong with the recursion.
+            //nope that doesn't maek sense either.
+            // _.each(bodyNodes.childNodes, item => {
+            for (var i = 0; i < bodyNodes.childNodes.length; i++) {
+
                 recurseThis(bodyNodes.childNodes[i]);
             }
+            // })
+            
         } 
         
     }
