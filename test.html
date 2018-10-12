@@ -22,6 +22,9 @@
 // };
 
 // But instead we're going to implement it from scratch:
+var isElement = function(element) {
+    return (element instanceof Element);
+}
 var getElementsByClassName = function(className) {
   // your code here
   //base case
@@ -31,23 +34,32 @@ var getElementsByClassName = function(className) {
   //if node has childNodes do this recursion.
   //else push it the up top and next!
     var answerArr = [];
-    const bodyNodes = document.body.childNodes;
-    for (let i = 0; i < bodyNodes.length-1; ++i) {
-        if (bodyNodes[i].hasChildNodes()) {
-            answerArr.concat( getElementsByClassName(className) );
-        } else if (bodyNodes[i].classList) {
-            if (bodyNodes[i].classList.value.indexOf(className) > -1) {
-                answerArr.concat(bodyNodes[i]);
+    var body = document.body;
+
+    var recurse = function (body) {
+        if ( body.classList && body.classList.contains(className) ) {
+            answerArr.concat(body);
+        }
+        if (body.hasChildNodes()) {
+            for (var i = 0; i < body.length-1; ++i) {
+                recurse(body.childNodes[i]);
             }
         }
     }
-    console.log(answerArr);
+    recurse(body); //necessary to call it. otherwise it's just a function expression.
     return answerArr;
 };
 
     </script>
 
     <div></div>
-    <div class='joop'>hihih</div>
+    <div class='joop jorp'>hihih</div>
 </body>
 </html>
+
+<!--
+    if i can only call the className, that means, the loop has to already be running.
+    maybe i can pop it from the array.
+
+
+-->

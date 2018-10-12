@@ -4,26 +4,26 @@
 // };
 
 // But instead we're going to implement it from scratch:
-var getElementsByClassName = function(className) {
-  // your code here
-  //base case
-  //This is a permuation problem.
-  //
-  //for all nodes in document.body
-  //if node has childNodes do this recursion.
-  //else push it the up top and next!
-
+var getElementsByClassName = function (className) {
+    // your code here
+    //last part of the tree is when there are no more elements in body.
+    //body.childNodes[i] = body.childNodes[3] (lets say.)
+    //
     var answerArr = [];
-    const bodyNodes = document.body.childNodes;
-    for (let i = 0; i < bodyNodes.length; ++i) {
-        //intrinsic problem lies in how to count downn when only the classname is involved.
-        if (bodyNodes[i].hasChildNodes()) {
-            answer.concat( getElementsByClassName(className) );
-        } else {
-            if (bodyNodes[i].classList.value.indexOf(className) > -1) {
-                answerArr.push(bodyNodes[i]);
+    var body = document.body;
+
+    var recurse = function (body) {
+        if (body.classList && body.classList.contains(className)) {
+            //last part of the tree is element that i find in the element 3.
+            //this time i get an empty array. debug time.
+            answerArr.concat(body);
+        }
+        if (body.hasChildNodes()) {
+            for (var i = 0; i < body.length - 1; ++i) {
+                recurse(body.childNodes[i]);
             }
         }
     }
+    recurse(body); //necessary to call it. otherwise it's just a function expression.
     return answerArr;
 };
