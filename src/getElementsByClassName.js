@@ -10,15 +10,18 @@ var getElementsByClassName = function(className) {
     //
     var answerArr = [];
     var bodyNodes = document.body;
-    console.log(bodyNodes, bodyNodes.childElementCount);
+    // console.log(bodyNodes, bodyNodes.childElementCount);
     //looping 4 times but i have at least 5 elements.
     var recurseThis = function (bodyNodes) {
         //this recursion is stopping early.
         if ( bodyNodes.classList && bodyNodes.classList.contains(className) ) {
-            console.log("hello");
+            // console.log("hello");
             //this part isnt registering at all.
             // console.log(bodyNodes);
             answerArr.push(bodyNodes);
+
+            //#self study question: insert concat into answerArr to see what happens.
+            //concat produces a copy. It works if your returning the first answer but in this case we need all the classes.
         }         
         if ( bodyNodes.hasChildNodes() ) {
             //this should do it first.
