@@ -6,6 +6,7 @@ const stringifyJSON = require('./stringifyJSON.js');
 var obj = {a:1, b: 1};
 var arr = [1, 2, [3, 4]];
 var arr2 = [1,2,3,4];
+var obj2 = {"a":1,"b":2, two: [1,2], "c":3};
 
 
 assertEquals(
@@ -21,7 +22,14 @@ assertEquals(isWhat(obj), 'object', 'object typetests');
 
 console.log('\n');
 
-assertEquals(stringifyJSON(obj), 'dd', 'objstringifyJSONtests');
-assertEquals(stringifyJSON(arr), 'dd', 'arrstringifyJSONtests');
-assertEquals(stringifyJSON(arr2), 'dd', 'arrstringifyJSONtests');
-assertEquals(stringifyJSON([1,2]), 'dd', 'arrstringifyJSONtests');
+assertEquals(stringifyJSON(obj), JSON.stringify(obj), 'objstringify');
+assertEquals(stringifyJSON(obj2), JSON.stringify(obj2), 'nestobjstringify');
+
+console.log('\n');
+
+assertEquals(stringifyJSON(arr), JSON.stringify(arr), 'nestedarrstringify');
+assertEquals(stringifyJSON(arr2), JSON.stringify(arr2), 'arrstringify');
+assertEquals(stringifyJSON([1,2]), JSON.stringify([1,2]), 'arrstringify');
+
+
+//i need to learn qunit one of these days.
