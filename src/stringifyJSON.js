@@ -7,19 +7,23 @@ const {each, parse, assertEquals} = require('../test.js');
 var answer = '';
 var stringifyJSON = function(obj) {
   // your code goes here
-  if ( Array.isArray(obj)) {
-    answer+=1;
+  var answer = '';
+  var recurseThis = function(obj) {
+    //if item isn't an object, that means it's a value, so i want that straight in.
+    if (typeof obj !== 'object') {
+    }
+    // console.log(Object.is(obj));
+    //if is an object. 
+    if (typeof obj === 'object') {
+      each(obj, (item, key) => {
+        answer += parse(item,key);
+        recurseThis(item);
+      });
+    }
   }
-  if ( !Array.isArray(obj) && Object.is(obj)) {
-
-  }
-  // each( obj, item => {
-  //   if (Object.is(item))
-  //     var recurseThis = function(item) {
-      
-  //     }
-  // }
-  
+  recurseThis(obj);
+  return answer;
   
 };
 
+module.exports = stringifyJSON;
