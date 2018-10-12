@@ -22,38 +22,45 @@
 // };
 
 // But instead we're going to implement it from scratch:
-var isElement = function(element) {
-    return (element instanceof Element);
-}
+var ind=0;
 var getElementsByClassName = function(className) {
-  // your code here
-  //base case
-  //This is a permuation problem.
-  //
-  //for all nodes in document.body
-  //if node has childNodes do this recursion.
-  //else push it the up top and next!
+    //last part of the tree is when there are no more elements in body.
+    //body.childNodes[i] = body.childNodes[3] (lets say.)
+    //
     var answerArr = [];
-    var body = document.body;
-
-    var recurse = function (body) {
-        if ( body.classList && body.classList.contains(className) ) {
-            answerArr.concat(body);
-        }
-        if (body.hasChildNodes()) {
-            for (var i = 0; i < body.length-1; ++i) {
-                recurse(body.childNodes[i]);
+    var bodyNodes = document.body;
+    console.log(bodyNodes, bodyNodes.childElementCount);
+    //looping 4 times but i have at least 5 elements.
+    var recurseThis = function (bodyNodes) {
+        //this recursion is stopping early.
+        alert(ind++);
+        if ( bodyNodes.classList && bodyNodes.classList.contains(className) ) {
+            console.log("hello");
+            //this part isnt registering at all.
+            // console.log(bodyNodes);
+            answerArr.push(bodyNodes);
+        }         
+        if ( bodyNodes.hasChildNodes() ) {
+            //this should do it first.
+            //the block inside here does run.
+            for (var i = 0; i < bodyNodes.; i++) {
+                //getting the length doesnt work?
+                //body nodes is an object.
+                //okay i got this block to run. But array is still empty.
+                //there must be something wrong with the recursion.
+                recurseThis(bodyNodes.childNodes[i]);
             }
-        }
+        } 
+        
     }
-    recurse(body); //necessary to call it. otherwise it's just a function expression.
+    recurseThis(bodyNodes); //necessary to call it. otherwise it's just a function expression.
     return answerArr;
 };
 
     </script>
 
-    <div></div>
-    <div class='joop jorp'>hihih</div>
+    <div><div class='pooj'></div></div>
+    <div class='joop'>hihih</div>
 </body>
 </html>
 

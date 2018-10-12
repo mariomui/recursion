@@ -16,7 +16,8 @@ var getElementsByClassName = function (className) {
         if (body.classList && body.classList.contains(className)) {
             //last part of the tree is element that i find in the element 3.
             //this time i get an empty array. debug time.
-            answerArr.concat(body);
+            console.log()
+            answerArr.push(body);
         }
         if (body.hasChildNodes()) {
             for (var i = 0; i < body.length - 1; ++i) {
