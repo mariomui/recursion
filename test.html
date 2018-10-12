@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+  // your code here
+  //base case
+  //This is a permuation problem.
+  //
+  //for all nodes in document.body
+  //if node has childNodes do this recursion.
+  //else push it the up top and next!
+
+    // If life was easy, we could just do things the easy way:
+// var getElementsByClassName = function (className) {
+//   return document.getElementsByClassName(className);
+// };
+
+// But instead we're going to implement it from scratch:
+var getElementsByClassName = function(className) {
+  // your code here
+  //base case
+  //This is a permuation problem.
+  //
+  //for all nodes in document.body
+  //if node has childNodes do this recursion.
+  //else push it the up top and next!
+    var answerArr = [];
+    const bodyNodes = document.body.childNodes;
+    for (let i = 0; i < bodyNodes.length-1; ++i) {
+        if (bodyNodes[i].hasChildNodes()) {
+            answerArr.concat( getElementsByClassName(className) );
+        } else if (bodyNodes[i].classList) {
+            if (bodyNodes[i].classList.value.indexOf(className) > -1) {
+                answerArr.concat(bodyNodes[i]);
+            }
+        }
+    }
+    console.log(answerArr);
+    return answerArr;
+};
+
+    </script>
+
+    <div></div>
+    <div class='joop'>hihih</div>
+</body>
+</html>
