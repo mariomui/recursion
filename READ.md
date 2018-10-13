@@ -4,7 +4,15 @@ node testsite.js to run tests
 OR
 npm run tryit
 
+#array solved
 
+#objects.
+the turn order is key('string') then value ('anything)
+
+Stringify(o) if stringify takes one argument. then it has to take a modified form of two of them along.
+maybe mash the key and value together and then pump it into stringify.
+problem: how do i find the last key in an object?
+i can do object.length? or get the key entries? redo the program not to use let key but to use object.keys and do the program that way. I can then change the callback to grab a psuedo index.
 # Replace stringifyJSON with your own function in src/stringifyJSON.js, and make the specs pass.
 
 //inputs
@@ -35,7 +43,10 @@ npm run tryit
 //array call recursion and add to answer, object do this call recursion and parse before adding to answer, value add to answer.
 
 //hand it off 
-
+//the pseudo code had more discipline than i did. 
+//remember to divide and conqueor at all times. 
+//REad example Approach Code
+Approach should divide and conqueor. Work on the array part before moving onto the object. use your tests.
 
 Implement getElementsByClassName with your own function in src/getElementsByClassName.js, and make the specs pass.
 

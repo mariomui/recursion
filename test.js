@@ -45,5 +45,16 @@ module.exports = {
         if (typeof target == 'boolean') {
             return 'boolean';
         }
-    }
+    },
+
+    convertTo: function (convertee) {
+        //this shold be able to do it.
+        //let's write it in my book.
+        if (typeof convertee === 'string') {
+            return `"${convertee}"`;
+        }
+        if (typeof convertee === 'number') {
+            return convertee;
+        }
+    },
 }
