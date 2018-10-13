@@ -13,6 +13,9 @@ Stringify(o) if stringify takes one argument. then it has to take a modified for
 maybe mash the key and value together and then pump it into stringify.
 problem: how do i find the last key in an object?
 i can do object.length? or get the key entries? redo the program not to use let key but to use object.keys and do the program that way. I can then change the callback to grab a psuedo index.
+
+Weird error. 
+functions and undefined shoudl be skipped over. oh. wait .
 # Replace stringifyJSON with your own function in src/stringifyJSON.js, and make the specs pass.
 
 //inputs
