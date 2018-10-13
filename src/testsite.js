@@ -7,7 +7,7 @@ var obj = {a:1, b: 1};
 var arr = [1, 2, [3, 4]];
 var arr2 = [1,2,3,4];
 var obj2 = {"a":1,"b":2, two: [1,2], "c":3};
-
+var obj3 = {"a":'jack', 'bjack':"mix", a: 10, "a": 10};
 
 assertEquals(
     each(obj, function (item, element) {
@@ -24,6 +24,7 @@ console.log('\n');
 
 assertEquals(stringifyJSON(obj), JSON.stringify(obj), 'objstringify');
 assertEquals(stringifyJSON(obj2), JSON.stringify(obj2), 'nestobjstringify');
+assertEquals(stringifyJSON(obj3), JSON.stringify(obj3), 'nestobjstringify');
 
 console.log('\n');
 

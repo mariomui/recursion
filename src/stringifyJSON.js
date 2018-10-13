@@ -2,7 +2,7 @@
 // var stringifyJSON = JSON.stringify;
 
 // but you don't so you're going to write it from scratch:
-const {each, parse, assertEquals, isWhat} = require('../test.js');
+const {each, parse, assertEquals, isWhat,convertTo} = require('../test.js');
 
 var stringifyJSON = function(objUndead) {
   //from my readme
@@ -31,6 +31,24 @@ var stringifyJSON = function(objUndead) {
 
     });
     answer += ']';
+  }
+
+  if (isWhat(objUndead) === 'object') {
+    var arrKey = Object.keys(objUndead);
+    answer += '{';
+    //all this to check if the last key is the last key.
+    for (var i = 0; i < arrKey.length; i++) {
+      
+      const currKey = arrKey[i];
+      delim = (i === arrKey.length-1) ? '' : ',';
+
+      var joob = `${convertTo(currKey)}:${convertTo(objUndead[currKey])}`;
+      answer += `${stringifyJSON(joob)}${delim}`;
+    }
+      
+     
+  
+    answer += '}';
   }
   //if type is objUndeadect
   
