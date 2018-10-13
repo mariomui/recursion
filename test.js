@@ -39,7 +39,7 @@ module.exports = {
         if (typeof target === 'string') {
             return 'string';
         }
-        if (typeof target == 'null') {
+        if (target == null) { 
             return 'null';
         }
         if (typeof target == 'boolean') {
