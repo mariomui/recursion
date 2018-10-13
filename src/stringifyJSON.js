@@ -13,10 +13,17 @@ var stringifyJSON = function(objUndead) {
   //loop through each one and make it stringy.
   //each item in the array can be a character, #, bool, null or er..let's just do these first.
   if (isWhat(objUndead) === 'string') {
-    return objUndead; //stop forgetting that this is recursion. i'm renaming objUndead.
+    return `"${objUndead}"`; //stop forgetting that this is recursion. i'm renaming objUndead.
   }
   if (isWhat(objUndead) === 'number') {
     return `${objUndead}`;
+  }
+
+  if (isWhat(objUndead) === 'boolean') {
+    return objUndead.toString();
+  }
+  if ( objUndead == null) {
+    return 'null';
   }
   
   if (isWhat(objUndead) === 'array') {
@@ -38,12 +45,19 @@ var stringifyJSON = function(objUndead) {
     answer += '{';
     //all this to check if the last key is the last key.
     for (var i = 0; i < arrKey.length; i++) {
-      
-      const currKey = arrKey[i];
-      delim = (i === arrKey.length-1) ? '' : ',';
 
-      var joob = `${convertTo(currKey)}:${convertTo(objUndead[currKey])}`;
-      answer += `${stringifyJSON(joob)}${delim}`;
+      const currKey = arrKey[i];
+      if (currKey !== 'function' || currKey !== 'undefined') {
+        delim = (i === arrKey.length - 1) ? '' : ',';
+
+        // var joob = `${convertTo(currKey)}:${convertTo(objUndead[currKey])}`;
+        // answer += `${stringifyJSON(joob)}${delim}`;
+        answer += `${stringifyJSON(currKey)}`;
+        answer += ':';
+        answer += `${stringifyJSON(objUndead[currKey])}`;
+        answer += delim;
+      }
+
     }
       
      
