@@ -2,7 +2,7 @@ const {each, parse, assertEquals, isWhat} = require('../test.js');
 const stringifyJSON = require('./stringifyJSON.js');
 //some tests.
 const stringifiableObjects = require('../spec/fixtures.js');
-
+// const unstringifiableValues = require('../spec/fixtures.js');
 var obj = {a:1, b: 1};
 var arr = [1, 2, [3, 4]];
 var arr2 = [1,2,3,4];
@@ -39,3 +39,16 @@ for (let i = 0; i < stringifiableObjects.length; i++) {
     const currLook = stringifiableObjects[i];
     assertEquals(stringifyJSON(currLook), JSON.stringify(currLook),i+ '.maintest:');
 }
+
+
+var unstringifiableValues = [
+    {
+      'functions': function() {},
+      'undefined': undefined
+    }
+  ];
+
+assertEquals(stringifyJSON(unstringifiableValues[0]), 2,'test2');
+
+// console.log((unstringifiableValues[0].toString()));
+// console.log(JSON.stringify(unstringifiableValues[0]));
