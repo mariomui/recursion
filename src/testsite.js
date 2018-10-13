@@ -48,7 +48,7 @@ var unstringifiableValues = [
     }
   ];
 
-assertEquals(stringifyJSON(unstringifiableValues[0]), 2,'test2');
+assertEquals(stringifyJSON(unstringifiableValues[0]), '{}','test2');
 
 // console.log((unstringifiableValues[0].toString()));
 // console.log(JSON.stringify(unstringifiableValues[0]));

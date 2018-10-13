@@ -9,21 +9,9 @@ var isWhat = function (target) {
       }
       return 'object';
   } 
-  if (typeof target === 'number') {
-      return 'number';
-  }
-  if (typeof target === 'string') {
-      return 'string';
-  }
-  if (target == null) { 
-      return 'null';
-  }
-  if (typeof target == 'boolean') {
-      return 'boolean';
-  }
-
-  
 }
+
+
 //=======================================
 // const {assertEquals, isWhat} = require('../test.js');
 var each = (collection, callback) => {
@@ -47,16 +35,16 @@ var stringifyJSON = function(objUndead) {
   //if type is array
   //loop through each one and make it stringy.
   //each item in the array can be a character, #, bool, null or er..let's just do these first.
-  if (isWhat(objUndead) === 'string') {
+  if (typeof objUndead === 'string') {
     // if (objUndead === 'functions') return '';
     // if (objUndead === 'undefined') return '';
     return `"${objUndead}"`; //stop forgetting that this is recursion. i'm renaming objUndead.
   }
-  if (isWhat(objUndead) === 'number') {
+  if (typeof objUndead === 'number') {
     return `${objUndead}`;
   }
 
-  if (isWhat(objUndead) === 'boolean') {
+  if (typeof objUndead === 'boolean') {
     return objUndead.toString();
   }
   if ( objUndead == null) {
